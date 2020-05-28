@@ -1,0 +1,12 @@
+{
+    "statusCode": 500,
+    "errorMessages": [
+        {
+            "severity": "ERROR",
+            "errorMessage": "An exception has occurred. Please contact SAP support for further investigation.",
+            "repeatedEntities": [],
+            "EntitiesNotFound": [],
+            "correlationId": "2ee1121e-b448-4f1f-5c40-007dc5eb3507"
+        }
+    ]
+}

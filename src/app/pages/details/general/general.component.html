@@ -1,0 +1,63 @@
+<div class="custom-tabs">
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12">
+
+                <ul class="custom-tabs__toggles">
+                    <li (click)="changeCustomTab('general')" [ngClass]="{'active' : activeTab === 'general'}">
+                        <span>Datos generales</span>
+                    </li>
+                    <li (click)="changeCustomTab('historic')" [ngClass]="{'active' : activeTab === 'historic'}">
+                        <span>Histórico de mantenimiento</span>
+                    </li>
+                    <!-- <li (click)="changeCustomTab('warnings')" [ngClass]="{'active' : activeTab === 'warnings'}">
+            <span>Avisos de mantenimiento</span> 
+          </li> -->
+                </ul>
+
+                <div class="custom-tabs__contents">
+
+                    <div class="custom-tabs__contents__item" *ngIf="activeTab === 'general'">
+                        <p class="title">
+                            <ion-icon name="analytics-outline"></ion-icon>
+                            Datos generales</p>
+                        <ion-list class="list ion-no-padding ion-no-margin">
+                            <ion-item *ngFor="let item of general | keyvalue" class="list__item" lines="full">
+                                <ion-label>
+                                    <span class="list__item__label">{{item.key}}:</span>
+                                    <span class="list__item__value">{{item.value !== null && item.value !== ''? item.value : '-'}}</span>
+                                </ion-label>
+                            </ion-item>
+                        </ion-list>
+                    </div>
+
+                    <div class="custom-tabs__contents__item" *ngIf="activeTab === 'historic'">
+                        <p class="title">
+                            <ion-icon name="timer-outline"></ion-icon> Histórico de mantenimiento</p>
+                        <ion-list class="list ion-no-padding ion-no-margin">
+                            <ion-item *ngFor="let wo of workorders" class="list__item" lines="full">
+                                <ion-label>
+                                    <span class="list__item__label">Orden de mantenimiento:</span>
+                                    <span class="list__item__value">{{ wo.TechnicalObjectDescription }}</span>
+                                    <span class="list__item__label">Descripción de mantenimiento:</span>
+                                    <span class="list__item__value">{{ wo.MaintenanceOrderDesc }} ({{ wo.MaintenanceOrderType }})</span>
+                                    <span class="list__item__label">Tipo de mantenimiento:</span>
+                                    <span class="list__item__value">{{ wo.OrderTypeName }}</span>
+                                    <span class="list__item__label">Orden de mantenimiento:</span>
+                                    <span class="list__item__value">{{ wo.MaintenanceOrder }} ({{ wo.MaintenanceOrderInternalID }})</span>
+                                </ion-label>
+                            </ion-item>
+                        </ion-list>
+                    </div>
+
+                    <!-- <div class="custom-tabs__contents__item" *ngIf="activeTab === 'warnings'">
+            <p class="title">Avisos de mantenimiento</p>
+          </div> -->
+                </div>
+
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</div>

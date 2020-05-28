@@ -1,0 +1,31 @@
+<div class="indicators">
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12">
+
+                <div class="indicators--inner">
+                    <p class="title">
+                        <ion-icon name="speedometer-outline"></ion-icon> Mediciones</p>
+
+                    <ion-list class="list">
+                        <ion-list-header class="list__item">
+                            <ion-label>
+                                <span>Nombre</span>
+                                <span>Descripcion</span>
+                                <span>Valor<small>(Uds.)</small></span>
+                            </ion-label>
+                        </ion-list-header>
+                        <ion-item class="list__item" *ngFor="let indicator of indicators" lines="full">
+                            <ion-label>
+                                <span>{{ indicator.indicatorName }}</span>
+                                <span class="muted">{{ indicator.dimensionDesc }}</span>
+                                <span>{{ 'XX' }}<small>{{ indicator.uomdescription }}</small></span>
+                            </ion-label>
+                        </ion-item>
+                    </ion-list>
+                </div>
+
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>

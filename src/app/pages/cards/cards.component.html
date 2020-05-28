@@ -1,0 +1,115 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Equipos</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="filters">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="auto">
+                    <ion-button (click)="openFilters()" [disabled]="equipments.length === 0">
+                        Filtrar
+                        <ion-icon name="filter-outline"></ion-icon>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="filters.length > 0">
+                <ion-col>
+                    <ng-container *ngFor="let filter of filters">
+                        <ion-chip outline (click)="removeFilter(filter.key)">
+                            <ion-label>{{ filter.key + ': ' + filter.value }}</ion-label>
+                            <ion-icon name="close-circle"></ion-icon>
+                        </ion-chip>
+                    </ng-container>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+    <div class="cards">
+        <ng-container *ngFor="let equipment of equipments">
+            <ion-card class="card">
+                <ion-card-header>
+                    <ion-card-subtitle>{{ equipment.equipmentId }}</ion-card-subtitle>
+                    <ion-card-title>{{ equipment.name }}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col size="12">
+                                <ion-chip outline>
+                                    <ion-label>{{ equipment.statusDescription }}</ion-label>
+                                </ion-chip>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col size="12">
+                                <p class="card__desc">
+                                    {{ equipment.shortDescription }}
+                                </p>
+                                <p class="card__loc" *ngIf="equipment.location !== null">
+                                    Localización: {{ equipment.location }}
+                                </p>            
+                            </ion-col>
+                        </ion-row>
+                        <ion-row class="ion-justify-content-end">
+                            <ion-col size="auto">
+                                <ion-button (click)="goToEquipment(equipment.equipmentId)">
+                                    Ver equipo
+                                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                                </ion-button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card-content>
+            </ion-card>
+        </ng-container>
+
+        <ng-container *ngIf="equipments.length === 0">
+            <ng-container *ngFor="let mock of [0,1,2,3,4,5,6,7,8,9]">
+                <ion-card class="card">
+                    <ion-card-header>
+                      <ion-card-subtitle>
+                        <ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text>
+                      </ion-card-subtitle>
+                      <ion-card-title>
+                        <ion-skeleton-text animated style="width: 80%; height: 24px;"></ion-skeleton-text>
+                      </ion-card-title>
+                    </ion-card-header>
+                  
+                    <ion-card-content>
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col size="12">
+                                    <ion-skeleton-text animated style="width: 30%; height: 32px; margin: 0 0 4px;"></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="12">
+                                    <p class="card__desc">
+                                        <ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
+                                        <ion-skeleton-text animated style="width: 60%;"></ion-skeleton-text>
+                                    </p>
+                                    <p class="card__loc">
+                                        <ion-skeleton-text animated style="width: 60%;"></ion-skeleton-text>
+                                    </p>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row class="ion-justify-content-end">
+                                <ion-col size="12" style="text-align: right">
+                                    <ion-skeleton-text animated style="display: inline-block; width: 50%; height: 36px; margin: 8px 0 0;"></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+    
+                    </ion-card-content>
+                </ion-card>
+            </ng-container>
+        </ng-container>
+
+    </div>
+</ion-content>
+
+<ion-footer></ion-footer>

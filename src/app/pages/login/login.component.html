@@ -1,0 +1,48 @@
+<ion-content>
+    <div class="container">
+        <div class="deco-bg" style="background-image: url('assets/images/login-bg.jpg');"></div>
+        <div class="deco-top">
+            <ng-container *ngFor="let dot of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48]">
+                <div class="dot">
+                    <div class="dot--inner"></div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="deco-bottom">
+            <ng-container *ngFor="let dot of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26]">
+                <div class="dot">
+                    <div class="dot--inner"></div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="login">
+            <div class="login__header">
+                <img class="login__header__logo" src="assets/images/logo.png">
+                <h1 class="login__header__title">Welcome</h1>
+            </div>
+            <div class="login__form">
+                <div class="login__form__field">
+                    <input type="text" #user (input)="updateUsername(user.value)" [ngClass]="{'valid': user.value !=''}" />
+                    <label>
+                        <ion-icon name="person-outline"></ion-icon>
+                        <span>Username:</span>
+                    </label>
+                </div>
+                <div class="login__form__field">
+                    <input type="password" required #pass (input)="updatePassword(pass.value)" [ngClass]="{'valid': pass.value !=''}" />
+                    <label>
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <span>Password:</span>
+                    </label>
+                </div>
+            </div>
+            <button (click)="login()" class="login__btn" type="button">Login</button>
+            <div (click)="login()" class="google-btn">
+                <div class="google-icon-wrapper">
+                    <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+                </div>
+                <p class="btn-text"><b>Login with google</b></p>
+            </div>
+        </div>
+    </div>
+</ion-content>

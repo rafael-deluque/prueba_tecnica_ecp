@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Filtrar equipos</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="closeModal()">
+                <ion-icon name="close-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <p>Por favor elija el dato por el que quiera filtrar:</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          <ion-item>
+            <ion-label>Dato a filtrar</ion-label>
+            <ion-select interface="popover" placeholder="Seleccionar dato" [(ngModel)]="chosen">
+              <ion-select-option value="name">Nombre</ion-select-option>
+              <ion-select-option value="description">Descripción</ion-select-option>
+              <ion-select-option value="location">Localización</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="chosen === 'name'">
+      <ion-col>
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          <ion-item>
+            <ion-label position="floating">Nombre del equipo</ion-label>
+            <ion-input type="text" [(ngModel)]="name"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="chosen === 'description'">
+      <ion-col>
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          <ion-item>
+            <ion-label position="floating">Descripción</ion-label>
+            <ion-input type="text" [(ngModel)]="description"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="chosen === 'location'">
+      <ion-col>
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          <ion-item>
+            <ion-label>Localización</ion-label>
+            <ion-select interface="popover" placeholder="Seleccionar localización" [(ngModel)]="location">
+              <ng-container *ngFor="let location of locations">
+                <ion-select-option [value]="location">{{ location }}</ion-select-option>
+              </ng-container>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-end" *ngIf="chosen !== ''">
+      <ion-col size="auto">
+        <ion-button (click)="closeModal()">
+          Filtrar equipos
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

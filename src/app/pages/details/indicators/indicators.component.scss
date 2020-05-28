@@ -1,0 +1,79 @@
+.indicators {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
+    overflow: auto;
+    margin: 0 auto;
+    @media (min-width: 768px) {
+        max-width: 720px;
+    }
+    @media (min-width: 992px) {
+        max-width: 960px;
+    }
+    @media (min-width: 1199px) {
+        max-width: 1100px;
+    }
+    &--inner {
+        display: block;
+        background-color: #FFFFFF;
+        padding: 10px 0;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+    }
+    .title {
+        display: block;
+        padding: 0 8px;
+        margin: 8px 0;
+        font-size: 20px;
+        line-height: 32px;
+        color: var(--color-accent-alt);
+        border-bottom: dotted;
+        padding-bottom: 10px;
+        border-width: thin;
+        ion-icon {
+            font-size: 32px;
+            position: relative;
+            top: 8px;
+        }
+    }
+    .list {
+        ion-item {
+            --padding-start: 8px;
+            --padding-end: 0;
+            --inner-padding-start: 0;
+            --inner-padding-end: 8px;
+            &:nth-of-type(even) {
+                --background: rgba(var(--color-primary-rgb), 0.05);
+            }
+        }
+        ion-list-header {
+            padding: 0 8px;
+            ion-label {
+                span {
+                    color: var(--color-accent-alt);
+                }
+            }
+        }
+        &__item {
+            ion-label {
+                display: flex;
+                width: 100%;
+                height: auto;
+                justify-content: space-between;
+                align-items: center;
+                span {
+                    color: var(--color-primary);
+                    &.muted {
+                        color: rgba(var(--color-primary-rgb), 0.6);
+                    }
+                    small {
+                        color: rgba(var(--color-primary-rgb), 0.6);
+                        font-size: 85%;
+                        margin: 0 0 0 2px;
+                    }
+                }
+            }
+        }
+    }
+}

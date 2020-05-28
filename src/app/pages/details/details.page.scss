@@ -1,0 +1,15 @@
+ion-toolbar {
+  --background: var(--color-accent-alt);
+
+  ion-title, ion-back-button {
+      --color: var(--color-bg);
+  }
+}
+
+ion-content {
+  --background: var(--color-bg);
+
+  ion-tab-button {
+    --color-selected: var(--color-accent-alt);
+  }
+}

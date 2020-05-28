@@ -1,0 +1,8 @@
+{
+    "appId": "com.sfdcmule.poc",
+    "appName": "pocSalesMule",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "www",
+    "cordova": {}
+}
